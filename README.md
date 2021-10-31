@@ -1,4 +1,5 @@
-# tcxc-php
+# TCXC PHP / Make Outbound Call using API - QuickStart
+
 Make Outbound voice Calls via PHP on specified carriers or termination end points. 
 
 TCXC Voice API benefits for DEVELOPERS:
@@ -8,5 +9,10 @@ TCXC Voice API benefits for DEVELOPERS:
 - [x] Choose the carrier that will terminate your application to phone calls 
 - [x] Choose best quality and switch back and forth between them easily 
 - [x] Integrate voice communications to your custom CRM or Sales force or Helpdesk
-- [x] Up to 50% cost savings on outbound calls compared to twilio and nexmo , PLIVO ...
+- [x] Wholesale pricing
+
+GET API Key: https://www.telecomsxchange.com
+
+
+
 
