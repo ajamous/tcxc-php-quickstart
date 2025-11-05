@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  php:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: tcxc-php
+    volumes:
+      - .:/app
+      - ./logs:/app/logs
+    environment:
+      - TCXC_HOST=${TCXC_HOST:-https://members.telecomsxchange.com}
+      - TCXC_LOGIN=${TCXC_LOGIN}
+      - TCXC_API_KEY=${TCXC_API_KEY}
+      - TCXC_ACCOUNT_ID=${TCXC_ACCOUNT_ID:-1}
+      - APP_ENV=${APP_ENV:-production}
+      - APP_DEBUG=${APP_DEBUG:-false}
+      - LOG_LEVEL=${LOG_LEVEL:-info}
+      - LOG_PATH=${LOG_PATH:-logs/tcxc.log}
+      - HTTP_TIMEOUT=${HTTP_TIMEOUT:-30}
+      - HTTP_CONNECT_TIMEOUT=${HTTP_CONNECT_TIMEOUT:-10}
+      - HTTP_SSL_VERIFY=${HTTP_SSL_VERIFY:-true}
+    env_file:
+      - .env
+    command: php public/index.php
+
+  php-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: tcxc-php-dev
+    volumes:
+      - .:/app
+      - ./logs:/app/logs
+    environment:
+      - APP_ENV=development
+      - APP_DEBUG=true
+    env_file:
+      - .env
+    command: tail -f /dev/null

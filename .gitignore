@@ -1,0 +1,36 @@
+# Composer dependencies
+/vendor/
+
+# Environment configuration
+.env
+.env.local
+.env.*.local
+
+# Logs
+/logs/*.log
+/logs/*
+
+# IDE and editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# PHPUnit
+.phpunit.result.cache
+/phpunit.xml
+
+# PHPStan
+/phpstan.neon.local
+
+# Build artifacts
+/build/
+
+# Cache
+/cache/
+*.cache
