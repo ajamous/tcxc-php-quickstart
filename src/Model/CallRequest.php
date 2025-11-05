@@ -71,6 +71,7 @@ class CallRequest
     public function setMetadata(array $metadata): self
     {
         $this->metadata = $metadata;
+
         return $this;
     }
 
@@ -151,6 +152,7 @@ class CallRequestBuilder
     public function setLegADestination(string $destination): self
     {
         $this->legADestination = $destination;
+
         return $this;
     }
 
@@ -163,6 +165,7 @@ class CallRequestBuilder
     public function setLegACallerId(string $callerId): self
     {
         $this->legACallerId = $callerId;
+
         return $this;
     }
 
@@ -175,6 +178,7 @@ class CallRequestBuilder
     public function setLegAConnectionId(int $connectionId): self
     {
         $this->legAConnectionId = $connectionId;
+
         return $this;
     }
 
@@ -187,6 +191,7 @@ class CallRequestBuilder
     public function setLegBDestination(string $destination): self
     {
         $this->legBDestination = $destination;
+
         return $this;
     }
 
@@ -199,6 +204,7 @@ class CallRequestBuilder
     public function setLegBCallerId(string $callerId): self
     {
         $this->legBCallerId = $callerId;
+
         return $this;
     }
 
@@ -211,6 +217,7 @@ class CallRequestBuilder
     public function setLegBConnectionId(int $connectionId): self
     {
         $this->legBConnectionId = $connectionId;
+
         return $this;
     }
 
@@ -223,6 +230,7 @@ class CallRequestBuilder
     public function setMetadata(array $metadata): self
     {
         $this->metadata = $metadata;
+
         return $this;
     }
 
@@ -258,6 +266,14 @@ class CallRequestBuilder
         if (!empty($errors)) {
             throw new ValidationException('Missing required fields for CallRequest', $errors);
         }
+
+        // PHPStan assertions - these are guaranteed to be non-null after validation
+        assert($this->legADestination !== null);
+        assert($this->legACallerId !== null);
+        assert($this->legAConnectionId !== null);
+        assert($this->legBDestination !== null);
+        assert($this->legBCallerId !== null);
+        assert($this->legBConnectionId !== null);
 
         return new CallRequest(
             new CallLeg($this->legADestination, $this->legACallerId, $this->legAConnectionId),

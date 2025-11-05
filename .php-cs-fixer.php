@@ -32,7 +32,6 @@ return $config
         'no_whitespace_in_blank_line' => true,
         'ordered_imports' => ['sort_algorithm' => 'alpha'],
         'return_type_declaration' => ['space_before' => 'none'],
-        'single_blank_line_before_namespace' => true,
         'single_quote' => true,
         'trailing_comma_in_multiline' => ['elements' => ['arrays']],
         'trim_array_spaces' => true,

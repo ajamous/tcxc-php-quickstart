@@ -76,11 +76,11 @@ class Configuration
             'http_timeout' => (int) ($_ENV['HTTP_TIMEOUT'] ?? getenv('HTTP_TIMEOUT') ?: 30),
             'http_connect_timeout' => (int) ($_ENV['HTTP_CONNECT_TIMEOUT'] ?? getenv('HTTP_CONNECT_TIMEOUT') ?: 10),
             'ssl_verify' => filter_var(
-                $_ENV['HTTP_SSL_VERIFY'] ?? getenv('HTTP_SSL_VERIFY') ?? true,
+                $_ENV['HTTP_SSL_VERIFY'] ?? getenv('HTTP_SSL_VERIFY') ?: true,
                 FILTER_VALIDATE_BOOLEAN
             ),
             'rate_limit_enabled' => filter_var(
-                $_ENV['RATE_LIMIT_ENABLED'] ?? getenv('RATE_LIMIT_ENABLED') ?? true,
+                $_ENV['RATE_LIMIT_ENABLED'] ?? getenv('RATE_LIMIT_ENABLED') ?: true,
                 FILTER_VALIDATE_BOOLEAN
             ),
             'rate_limit_max_requests' => (int) ($_ENV['RATE_LIMIT_MAX_REQUESTS'] ?? getenv('RATE_LIMIT_MAX_REQUESTS') ?: 100),

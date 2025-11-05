@@ -71,6 +71,7 @@ class CarrierRegistry
     public function hasCarrier(string $name): bool
     {
         $normalizedName = strtoupper(trim($name));
+
         return isset($this->carriers[$normalizedName]);
     }
 
@@ -113,6 +114,7 @@ class CarrierRegistry
     public function getCarrierName(int $connectionId): ?string
     {
         $name = array_search($connectionId, $this->carriers, true);
+
         return $name !== false ? $name : null;
     }
 

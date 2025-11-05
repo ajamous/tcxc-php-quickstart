@@ -24,14 +24,16 @@ class ApiException extends TCXCException
      * @param int|null $httpStatusCode HTTP status code
      * @param string|null $responseBody Response body
      * @param int $code Error code
+     * @param \Throwable|null $previous Previous exception
      */
     public function __construct(
         string $message = '',
         ?int $httpStatusCode = null,
         ?string $responseBody = null,
-        int $code = 0
+        int $code = 0,
+        ?\Throwable $previous = null
     ) {
-        parent::__construct($message, $code);
+        parent::__construct($message, $code, $previous);
         $this->httpStatusCode = $httpStatusCode;
         $this->responseBody = $responseBody;
     }

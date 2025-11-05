@@ -243,6 +243,7 @@ class TCXCClient
     public function setLogger(LoggerInterface $logger): self
     {
         $this->logger = $logger;
+
         return $this;
     }
 }

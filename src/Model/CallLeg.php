@@ -84,7 +84,7 @@ class CallLeg
         // Remove common formatting characters for validation
         $cleaned = preg_replace('/[\s\-\(\)]+/', '', $destination);
 
-        if (!preg_match('/^\+?[1-9]\d{6,14}$/', $cleaned)) {
+        if ($cleaned === null || !preg_match('/^\+?[1-9]\d{6,14}$/', $cleaned)) {
             throw new ValidationException('Invalid destination phone number format', [
                 'destination' => ['Must be a valid E.164 phone number (7-15 digits)'],
             ]);
@@ -108,7 +108,7 @@ class CallLeg
         // Remove common formatting characters for validation
         $cleaned = preg_replace('/[\s\-\(\)]+/', '', $callerId);
 
-        if (!preg_match('/^\+?[1-9]\d{6,14}$/', $cleaned)) {
+        if ($cleaned === null || !preg_match('/^\+?[1-9]\d{6,14}$/', $cleaned)) {
             throw new ValidationException('Invalid caller ID format', [
                 'caller_id' => ['Must be a valid E.164 phone number (7-15 digits)'],
             ]);
@@ -138,7 +138,9 @@ class CallLeg
      */
     private function normalizePhoneNumber(string $phoneNumber): string
     {
-        return preg_replace('/[\s\-\(\)+]+/', '', $phoneNumber);
+        $result = preg_replace('/[\s\-\(\)+]+/', '', $phoneNumber);
+
+        return $result !== null ? $result : $phoneNumber;
     }
 
     /**

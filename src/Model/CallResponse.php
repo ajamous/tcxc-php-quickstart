@@ -127,6 +127,8 @@ class CallResponse
      */
     public function toJson(): string
     {
-        return json_encode($this->toArray(), JSON_PRETTY_PRINT);
+        $json = json_encode($this->toArray(), JSON_PRETTY_PRINT);
+
+        return $json !== false ? $json : '{}';
     }
 }
